@@ -3,13 +3,15 @@ package com.example.weatherapp.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.weatherapp.presentation.navigation.GreetingScreen
+import com.example.weatherapp.presentation.navigation.WeatherHomeScreen
 import com.example.weatherapp.presentation.navigation.Notifications
-import com.example.weatherapp.presentation.navigation.Search
+import com.example.weatherapp.presentation.navigation.Location
 import com.example.weatherapp.presentation.navigation.Settings
+import com.example.weatherapp.presentation.viewModel.MainViewModel
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,16 +19,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
+            val viewModel: MainViewModel = viewModel()
             WeatherAppTheme {
                 NavHost(
                     navController = navController,
                     startDestination = "Home"
                 ) {
                     composable("Home") {
-                        GreetingScreen(navController = navController)
+                        WeatherHomeScreen(navController = navController, viewModel = viewModel)
                     }
-                    composable("Search") {
-                        Search()
+                    composable("Location") {
+                        Location()
                     }
                     composable("Settings") {
                         Settings()
@@ -38,12 +41,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
-
-
-    companion object {
-        const val HEAT = "Тепло"
-        const val HOT = "Жарко"
-        const val COLD = "Холодно"
-    }
 }
+
+

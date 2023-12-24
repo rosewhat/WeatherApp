@@ -1,16 +1,16 @@
-package com.example.weatherapp.presentation
+package com.example.weatherapp.presentation.bar
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -27,7 +27,7 @@ fun AppBar(title: String, navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 6.dp),
-                textAlign = TextAlign.Start
+                textAlign = TextAlign.Center // Center the title
             )
         },
         navigationIcon = {
@@ -36,7 +36,8 @@ fun AppBar(title: String, navController: NavController) {
                 contentDescription = "Menu",
                 modifier = Modifier
                     .padding(start = 6.dp, top = 8.dp, bottom = 8.dp)
-                    .clickable { }
+                    .clickable {
+                    }
             )
         },
         actions = {
@@ -46,12 +47,12 @@ fun AppBar(title: String, navController: NavController) {
                 modifier = Modifier
                     .padding(end = 16.dp, top = 8.dp, bottom = 8.dp)
                     .clickable {
-                        navController.navigate("Search")
+
                     }
             )
             Icon(
                 imageVector = Icons.Default.Notifications,
-                contentDescription = "Settings",
+                contentDescription = "Notifications",
                 modifier = Modifier
                     .padding(end = 16.dp, top = 8.dp, bottom = 8.dp)
                     .clickable {
@@ -64,3 +65,4 @@ fun AppBar(title: String, navController: NavController) {
             .padding(8.dp)
     )
 }
+
